@@ -84,21 +84,49 @@ namespace Ensek.API.Controllers
             return _context.MeterReading.ToArray();
         }
 
+        private bool ValidateData(MeterReading reading)
+        {
+            if (reclist.Contains(ID.ToString() + val.ToString()))
+            {
+                //Already entered - ignore and move onto the next item
+                notprocesscount++;
+            }
+            else
+            {
+                //Must have ID and Name
+                if (ID == 0 && val == 0)
+                {
+                    notprocesscount++;
+                }
+                else if (ID != 0 && val == 0)
+                {
+                    notprocesscount++;
+                }
+                else if (ID == 0 && val != 0)
+                {
+                    notprocesscount++;
+                }
+
+                //check reading is not negative
+                if (val > 0)
+                {
+                    //Check reading is 5 digits
+
+                }
+                else
+                {
+                    notprocesscount++;
+                }
+            }
+            return true;
+        }
+
         [HttpPost]
         public async void LoadCSVValues([FromQuery] QueryParameters queryParameters)
         {
             string filename = queryParameters.filename;
             MeterReading reading = new MeterReading();
 
-
-            // return CreatedAtAction(
-            //   "GetAccount",
-            // new { id = account.AccountID },
-            // account
-            //);
-            //}
-
-            // return "Hi";
             int processcount = 0;
             int notprocesscount = 0;
             using (var reader = new StreamReader(filename))
@@ -117,13 +145,24 @@ namespace Ensek.API.Controllers
                     while (csv.Read())
                     {
                         var record = csv.GetRecord<MeterReadingRetrieve>();
+                       
+                        
                         reading.AccountId = record.AccountId;
                         reading.MeterReadingDateTime = record.MeterReadingDateTime;
-                        reading.MeterReadValue = record.MeterReadValue; 
+                        reading.MeterReadValue = record.MeterReadValue;
+
+                        if (reclist.Contains(reading.AccountId.ToString() + reading.MeterReadValue.ToString()))
+                        {
+
+                        }
+
+
+                        if (ValidateData(reading))
+                        {
+
+                        }
 
                         
-
-
                        // int ID = Convert.ToInt32(record.AccountId);
                        // DateTime readdate = Convert.ToDateTime(record.MeterReadingDateTime);
                        // int val = Convert.ToInt32(record.MeterReadValue);
@@ -140,38 +179,7 @@ namespace Ensek.API.Controllers
                             //insert these values into the database - open a connection before here and then enter the information
 
                             //does this store correctly?
-                            if (reclist.Contains(ID.ToString() + val.ToString()))
-                            {
-                                //Already entered - ignore and move onto the next item
-                                notprocesscount++;
-                            }
-                            else
-                            {
-                                //Must have ID and Name
-                                if (ID == 0 && val == 0)
-                                {
-                                    notprocesscount++;
-                                }
-                                else if (ID != 0 && val == 0)
-                                {
-                                    notprocesscount++;
-                                }
-                                else if (ID == 0 && val != 0)
-                                {
-                                    notprocesscount++;
-                                }
-
-                                //check reading is not negative
-                                if(val > 0)
-                                {
-                                    //Check reading is 5 digits
-
-                                }
-                                else
-                                {
-                                    notprocesscount++;
-                                }
-                            }
+                           
 
 
                             //var meterread = db.Set<C>();
@@ -190,7 +198,7 @@ namespace Ensek.API.Controllers
                             //Reading values should be in format NNNNN
                             //Check that it matches this format.
 
-                            // reclist.Add(ID + Name);
+                            
                         }
                         if(reclist.Count > 0)
                         {
