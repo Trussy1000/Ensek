@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ensek.API.Models
 {
-    public class MeterReadingContext :DbContext
+    public class MeterReadingContext : DbContext
     {
         public MeterReadingContext(DbContextOptions<MeterReadingContext> options) : base(options)
         { }
@@ -16,12 +16,16 @@ namespace Ensek.API.Models
         {
             modelBuilder.Entity<Account>().HasMany(a => a.MeterReadings);
             modelBuilder.Entity<MeterReading>().HasOne(m => m.Account);
-          
+            
+
             modelBuilder.Seed();
         }
 
-      //  public DbSet<MeterReadingDb> meterreadings { get; set; }
-       // public DbSet<AccountDb> account { get; set; }
-        public DbSet<MeterReading> meterReading { get; set; }
+        //  public DbSet<MeterReadingDb> meterreadings { get; set; }
+        // public DbSet<AccountDb> account { get; set; }
+        public DbSet<MeterReading> MeterReading { get; set; }
+
+        public DbSet<Account> Accounts { get; set; }
+
     }
 }
