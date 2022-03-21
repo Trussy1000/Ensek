@@ -28,6 +28,10 @@ namespace Ensek.API.Controllers
             _context.Database.EnsureCreated();
         }
 
+        /// <summary>
+        /// Get all Accounts currently stored
+        /// </summary>
+        /// <returns>Arrray of all account information</returns>
         [HttpGet]
         public IEnumerable<Account> GetAllAccounts()
         {

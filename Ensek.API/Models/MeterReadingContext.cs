@@ -21,8 +21,6 @@ namespace Ensek.API.Models
             modelBuilder.Seed();
         }
 
-        //  public DbSet<MeterReadingDb> meterreadings { get; set; }
-        // public DbSet<AccountDb> account { get; set; }
         public DbSet<MeterReading> MeterReading { get; set; }
 
         public DbSet<Account> Accounts { get; set; }

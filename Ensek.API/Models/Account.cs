@@ -2,6 +2,9 @@
 
 namespace Ensek.API.Models
 {
+    /// <summary>
+    /// Accounts for meter readings - properties
+    /// </summary>
     public class Account
     {
         public int AccountID { get; set; }

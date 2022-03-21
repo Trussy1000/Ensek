@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ensek.API", "Ensek.API\Ensek.API.csproj", "{B7222E6F-69EA-4873-A5EC-E79ABAE40AD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ensek.API", "Ensek.API\Ensek.API.csproj", "{B7222E6F-69EA-4873-A5EC-E79ABAE40AD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{8C91CFCB-71CA-49B5-8540-251B53D7C58C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B7222E6F-69EA-4873-A5EC-E79ABAE40AD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7222E6F-69EA-4873-A5EC-E79ABAE40AD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7222E6F-69EA-4873-A5EC-E79ABAE40AD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C91CFCB-71CA-49B5-8540-251B53D7C58C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C91CFCB-71CA-49B5-8540-251B53D7C58C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C91CFCB-71CA-49B5-8540-251B53D7C58C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C91CFCB-71CA-49B5-8540-251B53D7C58C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
